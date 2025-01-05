@@ -2,7 +2,7 @@ class Node {
   constructor(value) {
     this.value = value;
     this.next = null;
-    this.prev = null;
+    this.prev = null; // only this has been added to the Node class
   }
 }
 
@@ -22,7 +22,7 @@ class DoublyLinkedList {
       this.tail = newNode;
     } else {
       this.tail.next = newNode;
-      this.prev = this.tail;
+      this.prev = this.tail; // this line has been added
       this.tail = newNode;
     }
     this.length++;
