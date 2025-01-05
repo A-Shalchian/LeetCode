@@ -28,6 +28,7 @@ class DoublyLinkedList {
     return this;
   }
 
+  // better pop method
   pop() {
     if (this.length === 0) {
       return undefined;
@@ -45,6 +46,22 @@ class DoublyLinkedList {
     this.length--;
     return temp;
   }
+
+  //     pop(){
+  //         if (!this.head) {
+  //             return undefined;
+  //           }
+  //           let temp = this.tail;
+  //           this.tail = this.tail.prev;
+  //           this.tail.next = null;
+  //           temp.prev = null;
+  //           this.length--;
+  //           if (this.length === 0) {
+  //             this.head = null;
+  //             this.tail = null;
+  //           }
+  //           return temp;
+  //     }
 }
 
 const myDoublyLinkedList = new DoublyLinkedList(1);
