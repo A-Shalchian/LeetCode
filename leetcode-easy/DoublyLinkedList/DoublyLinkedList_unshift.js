@@ -42,3 +42,12 @@ class DoublyLinkedList {
     return this;
   }
 }
+
+const myDoublyLinkedList = new DoublyLinkedList(1);
+
+myDoublyLinkedList.push(2);
+myDoublyLinkedList.push(3);
+
+myDoublyLinkedList.unshift(0);
+
+console.log(myDoublyLinkedList);
