@@ -23,6 +23,21 @@ class Stack {
     this.length++;
     return this;
   }
+
+  pop() {
+    if (this.length === 0) {
+      return undefined;
+    }
+    let temp = this.top;
+    if (this.length === 1) {
+      this.top = null;
+    } else {
+      this.top.next = this.top;
+      temp.next = null;
+    }
+    this.length--;
+    return temp;
+  }
 }
 
 let myStack = new Stack(1);
