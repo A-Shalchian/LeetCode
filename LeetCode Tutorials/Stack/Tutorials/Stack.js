@@ -27,14 +27,11 @@ class Stack {
   pop() {
     if (this.length === 0) {
       return undefined;
-    }
+    } // doesnt need to check the this.length === 1 since the stack will return null even if it has 1
     let temp = this.top;
-    if (this.length === 1) {
-      this.top = null;
-    } else {
-      this.top.next = this.top;
-      temp.next = null;
-    }
+    this.top = this.top.next;
+    temp.next = null;
+
     this.length--;
     return temp;
   }
