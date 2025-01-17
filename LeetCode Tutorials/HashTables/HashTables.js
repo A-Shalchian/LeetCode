@@ -31,6 +31,19 @@ class HashTable {
     }
     return undefined;
   }
+
+  keys() {
+    let allKeys = [];
+
+    for (let i = 0; i < this.dataMap.length; i++) {
+      if (this.dataMap[i]) {
+        for (let j = 0; j < this.dataMap[i].length; j++) {
+          allKeys.push(this.dataMap[i][j][0]);
+        }
+      }
+    }
+    return allKeys;
+  }
 }
 
 let myHashTable = new HashTable();
