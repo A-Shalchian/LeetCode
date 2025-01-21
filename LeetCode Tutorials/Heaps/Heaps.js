@@ -24,6 +24,31 @@ class Heap {
     ];
   }
 
+  #sinkdown(index) {
+    let maxIndex = index;
+    let size = this.#heap.length;
+
+    while (true) {
+      let leftIndex = this.#leftchild(index);
+      let rightIndex = this.#rightChild(index);
+
+      if (leftIndex < size && this.#heap[leftIndex] > this.#heap[maxIndex]) {
+        maxIndex = leftIndex;
+      }
+
+      if (rightIndex < size && this.#heap[rightIndex] > this.#heap[maxIndex]) {
+        maxIndex = rightIndex;
+      }
+
+      if (maxIndex !== index) {
+        this.#swap(index, maxIndex);
+        index = maxIndex;
+      } else {
+        return;
+      }
+    }
+  }
+
   insert(value) {
     this.#heap.push(value);
     let current = this.#heap.length - 1;
@@ -37,6 +62,21 @@ class Heap {
       current = this.#parent(current);
     }
   }
+
+  remove() {
+    if (this.#heap.length === 0) {
+      return null;
+    }
+    if (this.#heap.length === 1) {
+      return this.#heap.pop();
+    }
+
+    const maxValue = this.#heap[0];
+    this.#heap[0] = this.#heap.pop();
+    this.#sinkdown(0);
+
+    return maxValue;
+  }
 }
 
 let myHeap = new Heap();
@@ -46,5 +86,13 @@ myHeap.insert(72);
 myHeap.insert(43);
 myHeap.insert(78);
 myHeap.insert(55);
+
+console.log(myHeap.getHeap());
+
+myHeap.insert(100);
+
+console.log(myHeap.getHeap());
+
+myHeap.remove();
 
 console.log(myHeap.getHeap());
