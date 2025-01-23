@@ -47,11 +47,28 @@ class BST {
       return this.rContains(value, currentNode.right);
     }
   }
+
+  #rInsert(value, currentNode = this.root) {
+    if (currentNode === null) return new Node(value);
+    if (value < currentNode.value) {
+      currentNode.left = this.#rInsert(value, currentNode.left);
+    } else if (value > currentNode.value) {
+      currentNode.right = this.#rInsert(value, currentNode.right);
+    }
+    return currentNode;
+  }
+
+  rInsert(value) {
+    if (this.root === null) this.root = new Node(value);
+
+    this.#rInsert(value);
+  }
 }
 
 let myBST = new BST();
 
-myBST.insert(47);
-myBST.insert(27);
+myBST.rInsert(47);
+myBST.rInsert(27);
+myBST.rInsert(57);
 
-console.log(myBST.rContains(27));
+console.log(myBST);
