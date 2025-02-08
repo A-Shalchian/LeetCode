@@ -5,26 +5,35 @@ const computersNum = Math.floor(Math.random() * 3);
 const computerChoice = rpslist[computersNum];
 
 const rpsGame = (choice) => {
-  while (choice) {
-    if (choice === computerChoice) {
-      return "Tie!";
-    } else if (choice === "r" && computerChoice === "p") {
-      return "player loses";
-    } else if (choice === "r" && computerChoice === "s") {
-      return "player wins";
-    } else if (choice === "p" && computerChoice === "r") {
-      return "player wins";
-    } else if (choice === "p" && computerChoice === "s") {
-      return "player loses";
-    } else if (choice === "s" && computerChoice === "p") {
-      return "player wins";
-    } else if (choice === "s" && computerChoice === "r") {
-      return "player loses";
+  if (choice === computerChoice) {
+    return "It's a tie!";
+  }
+  if (choice === "r") {
+    if (computerChoice === "p") {
+      return "You lose!";
     } else {
-      return "wrong thing";
+      return "You win!";
     }
   }
+  if (choice === "p") {
+    if (computerChoice === "s") {
+      return "You lose!";
+    } else {
+      return "You win!";
+    }
+  }
+  if (choice === "s") {
+    if (computerChoice === "r") {
+      return "You lose!";
+    } else {
+      return "You win!";
+    }
+  }
+  if (choice !== "r" || choice !== "p" || choice !== "s") {
+    return "Invalid choice!";
+  }
 };
-console.log(computerChoice);
 
+console.log(computerChoice);
 console.log(rpsGame("p"));
+console.log(rpsGame("r"));
