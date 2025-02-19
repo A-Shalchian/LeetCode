@@ -6,7 +6,7 @@ function swap(array, firstIndex, secondIndex) {
 
 function pivot(array, pivotIndex = 0, endIndex = array.length - 1) {
   let swapIndex = pivotIndex;
-  for (let i = pivotIndex + 1; i < endIndex; i++) {
+  for (let i = pivotIndex + 1; i <= endIndex; i++) {
     if (array[i] < array[pivotIndex]) {
       swapIndex++;
       swap(array, swapIndex, i);
@@ -24,3 +24,7 @@ function quickSort(array, left = 0, right = array.length - 1) {
   }
   return array;
 }
+
+let originalArray = [2, 4, 1, 3, 5, -11, 8, 9, -11];
+
+console.log(quickSort(originalArray));
