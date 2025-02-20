@@ -1,13 +1,33 @@
+import java.util.Arrays;
 
 public class SelectionSort {
 
-    public static void selectionSort(int[] arr) {
+    public static void selectionSortAsc(int[] arr) {
         int n = arr.length;
         for (int i = 0; i < n - 1; i++) {
             int min = i;
             // Find the minimum element in the unsorted part
             for (int j = i + 1; j < n; j++) {
-                if (arr[j] < arr[min]) { // by changing this to > we can sort in descending order
+                if (arr[j] < arr[min]) { 
+                    min = j;
+                }
+            }
+            // Swap only once after the inner loop finishes
+            if (i != min) {
+                int temp = arr[i];
+                arr[i] = arr[min];
+                arr[min] = temp;
+            }
+        }
+    }
+
+    public static void selectionSortDesc(int[] arr) {
+        int n = arr.length;
+        for (int i = 0; i < n - 1; i++) {
+            int min = i;
+            // Find the minimum element in the unsorted part
+            for (int j = i + 1; j < n; j++) {
+                if (arr[j] > arr[min]) { 
                     min = j;
                 }
             }
@@ -31,9 +51,16 @@ public class SelectionSort {
         System.out.println("Original array:");
         printArray(array);
         
-        selectionSort(array);
+        int[] ascArray = Arrays.copyOf(array, array.length);
+        selectionSortAsc(ascArray);
+
+        System.out.println("Sorted array ascending:");
+        printArray(ascArray);
+
+        int[] descArray = Arrays.copyOf(array, array.length);
+        selectionSortDesc(descArray);
         
-        System.out.println("Sorted array:");
-        printArray(array);
+        System.out.println("Sorted array descending:");
+        printArray(descArray);
     }
 }

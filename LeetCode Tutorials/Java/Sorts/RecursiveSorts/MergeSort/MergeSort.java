@@ -3,8 +3,18 @@ import java.util.Arrays;
 
 public class MergeSort {
 
-    // Recursive merge sort method for ascending order
-    public static void mergeSortAsc(int[] arr, int left, int right) {
+    // Public wrapper for ascending merge sort
+    public static void mergeSortAsc(int[] arr) {
+        mergeSortAsc(arr, 0, arr.length - 1);
+    }
+    
+    // Public wrapper for descending merge sort
+    public static void mergeSortDesc(int[] arr) {
+        mergeSortDesc(arr, 0, arr.length - 1);
+    }
+    
+    // Recursive merge sort method for ascending order (internal use)
+    private static void mergeSortAsc(int[] arr, int left, int right) {
         if (left >= right) return;
         int mid = left + (right - left) / 2;
         mergeSortAsc(arr, left, mid);
@@ -12,8 +22,8 @@ public class MergeSort {
         mergeAsc(arr, left, mid, right);
     }
 
-    // Recursive merge sort method for descending order
-    public static void mergeSortDesc(int[] arr, int left, int right) {
+    // Recursive merge sort method for descending order (internal use)
+    private static void mergeSortDesc(int[] arr, int left, int right) {
         if (left >= right) return;
         int mid = left + (right - left) / 2;
         mergeSortDesc(arr, left, mid);
@@ -22,7 +32,7 @@ public class MergeSort {
     }
     
     // Merge two sorted subarrays into ascending order
-    public static void mergeAsc(int[] arr, int left, int mid, int right) {
+    private static void mergeAsc(int[] arr, int left, int mid, int right) {
         int[] leftArray = Arrays.copyOfRange(arr, left, mid + 1);
         int[] rightArray = Arrays.copyOfRange(arr, mid + 1, right + 1);
         int i = 0, j = 0, k = left;
@@ -45,7 +55,7 @@ public class MergeSort {
     }
     
     // Merge two sorted subarrays into descending order
-    public static void mergeDesc(int[] arr, int left, int mid, int right) {
+    private static void mergeDesc(int[] arr, int left, int mid, int right) {
         int[] leftArray = Arrays.copyOfRange(arr, left, mid + 1);
         int[] rightArray = Arrays.copyOfRange(arr, mid + 1, right + 1);
         int i = 0, j = 0, k = left;
@@ -73,12 +83,12 @@ public class MergeSort {
         
         // Create a copy for ascending sort
         int[] ascArray = Arrays.copyOf(originalArray, originalArray.length);
-        mergeSortAsc(ascArray, 0, ascArray.length - 1);
+        mergeSortAsc(ascArray);
         System.out.println("Ascending sort: " + Arrays.toString(ascArray));
         
         // Create a copy for descending sort
         int[] descArray = Arrays.copyOf(originalArray, originalArray.length);
-        mergeSortDesc(descArray, 0, descArray.length - 1);
+        mergeSortDesc(descArray);
         System.out.println("Descending sort: " + Arrays.toString(descArray));
     }
 }
