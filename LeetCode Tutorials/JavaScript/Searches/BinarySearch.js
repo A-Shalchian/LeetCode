@@ -11,5 +11,11 @@ function binarySearch(arr, target) {
   return -1;
 }
 
+// the array must be sorted for binary search to work
+// worst case time complexity is O(log n)
+// best case time complexity is O(1) (if the target is in the middle of the array)
+// average time complexity is O(log n)
+// space complexity is O(1)
+
 console.log(binarySearch([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 5)); // 4
 console.log(binarySearch([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 1)); // 0

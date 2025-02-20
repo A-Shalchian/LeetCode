@@ -19,6 +19,12 @@ public class BinarySearch {
         }
         
         return -1;
+
+        // the array must be sorted for binary search to work
+        // worst case time complexity is O(log n)
+        // best case time complexity is O(1) (if the target is the middle element)
+        // average time complexity is O(log n)
+        // space complexity is O(1)
     }
 
     public static void printArray(int[] arr){

@@ -19,7 +19,12 @@ public class RecursiveBinarySearch{
     }
    }
 
- 
+   // the array must be sorted for binary search to work
+   // worst case time complexity is O(log n)
+   // average time complexity is O(log n)
+   // best case time complexity is O(1) (if the target is the middle element)
+   // space complexity is O(log n) (recursive calls are stored in the call stack)
+   // binary search is efficient for large arrays
 
     public static void printArray(int[] arr){
      for (int num : arr){
