@@ -1,39 +1,30 @@
-const rpslist = ["r", "p", "s"];
+const playerChoice = ["Rock", "Paper", "Scissor"];
+const botNumber = Math.floor(Math.random() * 3);
+const botChoice = playerChoice[botNumber];
 
-const computersNum = Math.floor(Math.random() * 3);
+const botLoseMsg = `Bot loses with ${botChoice}!`;
+const botWinMsg = `Bot wins with ${botChoice}!`;
 
-const computerChoice = rpslist[computersNum];
+const rps = (choice) => {
+  if (choice.length === 1) {
+    const lower = choice.toLowerCase();
+    if (lower === "r") choice = "Rock";
+    else if (lower === "p") choice = "Paper";
+    else if (lower === "s") choice = "Scissor";
+    else return "Invalid Choice!";
+  } else {
+    choice = choice.charAt(0).toUpperCase() + choice.slice(1).toLowerCase();
+  }
 
-const rpsGame = (choice) => {
-  if (choice === computerChoice) {
-    return "It's a tie!";
-  }
-  if (choice === "r") {
-    if (computerChoice === "p") {
-      return "You lose!";
-    } else {
-      return "You win!";
-    }
-  }
-  if (choice === "p") {
-    if (computerChoice === "s") {
-      return "You lose!";
-    } else {
-      return "You win!";
-    }
-  }
-  if (choice === "s") {
-    if (computerChoice === "r") {
-      return "You lose!";
-    } else {
-      return "You win!";
-    }
-  }
-  if (choice !== "r" || choice !== "p" || choice !== "s") {
-    return "Invalid choice!";
-  }
+  if (choice === botChoice) return "You have tied!";
+
+  if (choice === "Rock") {
+    return botChoice === "Paper" ? botWinMsg : botLoseMsg;
+  } else if (choice === "Paper") {
+    return botChoice === "Scissor" ? botWinMsg : botLoseMsg;
+  } else if (choice === "Scissor") {
+    return botChoice === "Rock" ? botWinMsg : botLoseMsg;
+  } else return "Invalid Choice!";
 };
 
-console.log(computerChoice);
-console.log(rpsGame("p"));
-console.log(rpsGame("r"));
+console.log(rps("r"));
